@@ -16,14 +16,27 @@ exports.get = async(req, res, next) => {
 
 exports.post = async(req, res, next) => {
     try {
-         var data = await repository.create({
-            USR_EMAIL:   req.body.USR_EMAIL   ,
-            USR_SENHA:   md5(req.body.USR_SENHA) 
-         });
-        res.status(201).send({
-            message: 'Inserido com sucesso'
-        });
+        if(req.body.USR_EMAIL == ''){
+            res.status(400).send({
+                message: 'Campo e-mail obrigatório',
+            });
+        }
+        if(req.body.USR_SENHA == ''){
+            res.status(400).send({
+                message: 'Campo Senha é obrigatório',
+            });
+        }
+        else{
+            var data = await repository.create({
+                USR_EMAIL:   req.body.USR_EMAIL   ,
+                USR_SENHA:   md5(req.body.USR_SENHA) 
+            });
+            res.status(201).send({
+                message: 'Inserido com sucesso'
+            });
+        }
     } catch (e) {
+        console.log(e);
         res.status(400).send({
             message: 'Falha na inserção',
             data: e
@@ -47,13 +60,25 @@ exports.delete = async(req, res, next) => {
 
 exports.update = async(req, res, next) => {
     try {
-         var data = await repository.put(req.body.USR_ID, {
-            USR_EMAIL:   req.body.USR_EMAIL,
-            USR_SENHA:   md5(req.body.USR_SENHA) 
-         });
-        res.status(201).send({
-            message: 'Editado com sucesso'
-        });
+        if(req.body.USR_EMAIL == ''){
+            res.status(400).send({
+                message: 'Campo e-mail obrigatório',
+            });
+        }
+        if(req.body.USR_SENHA == ''){
+            res.status(400).send({
+                message: 'Campo Senha é obrigatório',
+            });
+        }
+        else{
+            var data = await repository.put(req.body.USR_ID, {
+                USR_EMAIL:   req.body.USR_EMAIL,
+                USR_SENHA:   md5(req.body.USR_SENHA) 
+            });
+            res.status(201).send({
+                message: 'Editado com sucesso'
+            });
+        }
     } catch (e) {
         res.status(400).send({
             message: 'Falha na edição',

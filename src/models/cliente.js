@@ -14,6 +14,8 @@ module.exports = class Cliente extends Model{
             USR_EMAIL: {
                 type: Sequelize.STRING,
                 trim: true,
+                allowNull: false,
+                notNull: {msg: 'Email obrigatorio'}
             },
             USR_SENHA: {
                 type: Sequelize.STRING,
