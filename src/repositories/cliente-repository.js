@@ -34,3 +34,15 @@ exports.put = async(id, data) =>{
         });
     return res;
 }
+//deleta dados do banco
+exports.delete = async(id) =>{
+    var res = await Usuario.destroy(
+        {
+            where: {
+                USR_ID: id
+            }
+        })
+    return res;
+}    
+
+
