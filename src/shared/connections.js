@@ -5,7 +5,7 @@ exports.databaseCredentials = {
     database: "cliente",
     user: "rodrigojuniorj",
     password: "roro17JU",
-    dialect: "mysql"
+    dialect: "mysql",
 };
 //Conectando no banco de dados
 const { Sequelize, Model, DataTypes } = require('sequelize');
