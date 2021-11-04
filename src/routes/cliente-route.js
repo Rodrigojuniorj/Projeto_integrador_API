@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-var cors = require('cors')
+var cors = require('cors');
 const controller = require('../controllers/cliente-controller');
 
 router.use(cors());
@@ -15,5 +15,7 @@ router.post('/cadastro', controller.post);
 router.post('/delete', controller.delete);
 //update dados banco
 router.post('/update', controller.update);
+//login
+router.post('/login', controller.login);
 
 module.exports = router;   

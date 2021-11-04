@@ -86,3 +86,15 @@ exports.update = async(req, res, next) => {
         });
     }
 }
+
+exports.login = async(req, res, next) => {
+    const email = req.body.USR_EMAIL;
+    const password = req.body.password;
+
+    db.query("Select * from usuario where USR_EMAIL = ? AND USR_SENHA = ?", 
+    [email, password], (err, result) => {
+        if(err){
+            res.send(err);
+        }
+    })
+}

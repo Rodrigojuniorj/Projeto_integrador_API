@@ -21,7 +21,7 @@ exports.get = async(codigo) => {
 //insere dados do banco
 exports.create = async(data) =>{
     console.log(data);
-   
+    
     return await Usuario.create(data);
 }
 
@@ -45,5 +45,7 @@ exports.delete = async(id) =>{
         })
     return res;
 }    
+
+
 
 
